@@ -10,33 +10,30 @@
             <div class="center"><h1>Household Services</h1></div>
             <div class="my_panel">
                 <div class="center"><h3>Professional Signup</h3></div>
+                <form action="/professional_register" method="POST">
                 <div class="input_form">
                     <div class="mb-3">
                         <label for="user_name" class="form-label">User name(email id)</label>
-                        <input type="email" class="form-control" name="user_name" id="user_name" placeholder="iitm@study.ac.in">
+                        <input type="email" class="form-control" name="user_name" id="user_name" placeholder="iitm@study.ac.in" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="password">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="password" required>
                     </div>
                     <div class="mb-3">
                         <label for="full_name" class="form-label">Full name</label>
-                        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="IIT Madras">
-                    </div>
-                    <div class="mb-3">
-                        <label for="location" class="form-label">Location</label>
-                        <input type="text" class="form-control" name="location" id="location" placeholder="Valcherry">
+                        <input type="text" class="form-control" name="full_name" id="full_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="pin_code" class="form-label">Pin code</label>
-                        <input type="text" class="form-control" name="pin_code" id="pin_code" placeholder="500001">
+                        <input type="text" class="form-control" name="pin_code" id="pin_code" placeholder="500001" required>
                     </div>
                     <!-- from the model - service_name field-->
                     <div class="mb-3">
-                        <label for="service_name" class="form-label">Service name</label>
-                        <select class="form-select" aria-label="service name">
+                        <label for="service" class="form-label">Service</label>
+                        <select class="form-select" aria-label="service" name="service" id="service" required>
                             <option selected>Open this select menu</option>
-                            <option value="1">One</option>
+                            <option value="one">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                           </select>
@@ -44,19 +41,20 @@
                     <!-- service_name closed-->
                     <div class="mb-3">
                         <label for="experience" class="form-label">Experience (in years)</label>
-                        <input type="number" class="form-control" name="experience" id="experience">
+                        <input type="number" class="form-control" name="experience" id="experience" required>
                     </div>
                     <div class="mb-3">
                         <label for="documents" class="form-label">Add documents (pdf)</label>
-                        <input type="file" class="form-control" name="documents" id="documents">
+                        <input type="file" class="form-control" name="documents" id="documents" required>
                     </div>
 
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        Existing user?<a href="#">Login</a>
+                        Existing user?<a href="/login">Login</a>
+                        <div class="center">{{msg}}</div>
                     </div>
                     <div>
-                        <a href="#">Register</a> as a service professional
+                        <a href="/customer_register">Register</a> as a new user
                     </div>
                 </div>
                 </form>

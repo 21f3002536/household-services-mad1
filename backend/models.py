@@ -10,8 +10,8 @@ class User(db.Model):
     user_id=db.Column(db.String,unique=True,nullable=False)
     password=db.Column(db.String,nullable=False)
     role=db.Column(db.Integer,nullable=False)
-    customers=db.relationship("Customer",cascade="all,delete",backref="user",lazy=True)
-    professionals=db.relationship("Professional",cascade="all,delete",backref="user",lazy=True)
+    customers=db.relationship("Customer",cascade="all,delete",backref="user",lazy=True, uselist=False)
+    professionals=db.relationship("Professional",cascade="all,delete",backref="user",lazy=True, uselist=False)
 
 class Customer(db.Model):
     __tablename__="customer"
@@ -32,6 +32,7 @@ class Professional(db.Model):
     service_id=db.Column(db.Integer,db.ForeignKey("services.service_id"),nullable=False)
     rating=db.Column(db.Integer)
     professional_requests=db.relationship("Service_requests",cascade="all,delete",backref="professional",lazy=True)
+    professional_services = db.relationship("Services", backref="professional", lazy=True)
 
 class Services(db.Model):
     __tablename__="services"
@@ -54,3 +55,6 @@ class Service_requests(db.Model):
     status=db.Column(db.String,default="requested")
     rating=db.Column(db.Integer,nullable=False)
     remarks=db.Column(db.String)  
+    request_professional=db.relationship("Professional", backref="service_requests", lazy=True)
+    request_customer=db.relationship("Customer",backref="service_requests",lazy=True)
+    request_service=db.relationship("Services",backref="service_requests",lazy=True)

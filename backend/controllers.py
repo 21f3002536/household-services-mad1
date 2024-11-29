@@ -4,6 +4,7 @@ from .models import *
 from flask import current_app as app
 from datetime import datetime
 from sqlalchemy import func
+from sqlalchemy import asc, desc
 from werkzeug.utils import secure_filename
 import matplotlib.pyplot as plt
 
@@ -18,11 +19,11 @@ def signin():
         pwd=request.form.get("password")
         usr=User.query.filter_by(user_id=uname,password=pwd).first()
         if usr and usr.role==0: #Existed and admin
-            return render_template("admin_home_layout.html")
+            return redirect(url_for("admin_dashboard"))
         elif usr and usr.role==1: #Existed and professional
-            return render_template("professional_home_layout.html")
+            return redirect(url_for("professional_dashboard", name=usr.professionals.full_name,id=usr.professionals.professional_id))
         elif usr and usr.role==2: #Existed and customer
-            return render_template("customer_home_layout.html")
+            return redirect(url_for("customer_dashboard", name=usr.customers.full_name,id=usr.customers.customer_id))
         else:
             return render_template("login.html",msg="Invalid user credentials...")
 
@@ -69,3 +70,49 @@ def cust_signup():
         return render_template("login.html",msg="Registration successfull, try login now")
     
     return render_template("customer_signup.html",msg="")
+
+@app.route("/admin", methods=["GET","POST"])
+def admin_dashboard():
+    services= get_services()
+    professionals = get_professionals()
+    requests = get_requests()
+    return render_template("admin_dashboard.html", services=services,professionals=professionals,requests=requests)
+
+@app.route("/professional/<name>/<id>", methods=["GET", "POST"])
+def professional_dashboard(name,id):
+    pending_requests=get_pending_requests()
+    closed_requests=get_closed_requests(id)
+    return render_template("professional_dashboard.html",pending_requests=pending_requests,closed_requests=closed_requests,name=name,id=id)
+
+@app.route("/customer/<name>/<id>", methods=["GET", "POST"])
+def customer_dashboard(name,id):
+    services=get_services()
+    customer_requests=get_customer_requests(id)
+    return render_template("customer_dashboard.html",customer_requests=customer_requests,services=services,name=name,id=id)
+
+
+
+#other functions
+def get_services():
+    services=Services.query.all()
+    return services
+
+def get_professionals():
+    professionals = Professional.query.all()
+    return professionals
+
+def get_requests():
+    requests= Service_requests.query.all()
+    return requests
+
+def get_pending_requests():
+    pending_requests=Service_requests.query.filter_by(status="requested").all()
+    return pending_requests
+
+def get_closed_requests(id):
+    closed_requests=Service_requests.query.filter_by(status="closed", professional_id=id).order_by(Service_requests.date_completed.desc()).all()
+    return closed_requests
+
+def get_customer_requests(id):
+    customer_requests=Service_requests.query.filter_by(customer_id=id).all()
+    return customer_requests

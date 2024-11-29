@@ -1,0 +1,73 @@
+{%extends "customer_home_layout.html"%}
+{%block content%}
+<div class="container">
+    <div><h3>Available Services</h3></div>
+    {%if services%}
+    <!-- populate with available services-->
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Service</th>
+            <th scope="col">Description</th>
+            <th scope="col">Time required</th>
+            <th scope="col">Base Price</th>
+            <th scope="col">Booking</th>
+          </tr>
+        </thead>
+        <!-- populate with services for that customer -->
+        <tbody>
+            {%for service in services%}
+          <tr>
+            <td>{{service.service_id}}</td>
+            <td>{{service.name}}</td>
+            <td>{{service.description}}</td>
+            <td>{{service.time_required}}</td>
+            <td>{{service.price}}</td>
+            <td><a class="btn btn-primary" href="#" type="button">Book</a></td>
+          </tr>
+          {%endfor%}
+        </tbody>
+        <!-- closed -->
+      </table>
+      {%else%}
+      <div>No services available..</div>
+      {%endif%}
+    <!-- closed -->
+  </div>
+  <div class="container">
+    <div><h3>Service History</h3></div>
+    {%if customer_requests%}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Service</th>
+          <th scope="col">Professional</th>
+          <th scope="col">Professional email</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <!-- populate with services for that customer -->
+      <tbody>
+        {%for request in customer_requests%}
+        <tr>
+          <td>{{request.request_id}}</td>
+          <td>{{request.request_service.name}}</td>
+          <td>{{request.request_professional.full_name}}</td>
+          <td>{{request.request_professional.email}}</td>
+          {%if request.status=="closed"%}
+          <td><a class="btn btn-primary" href="#" type="button">Close it?</a></td>
+          {%else%}
+          <td>{{request.status}}</td>
+          {%endif%}
+        </tr>
+        {%endfor%}
+      </tbody>
+      <!-- closed -->
+    </table>
+    {%else%}
+    <div>You have not used any services..</div>
+    {%endif%}
+  </div>
+  {%endblock%}

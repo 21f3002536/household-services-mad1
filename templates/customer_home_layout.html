@@ -14,16 +14,16 @@
                       <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                           <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" href="/customer/{{id}}">Home</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="#">Search</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Summary</a>
+                            <a class="nav-link" href="/customer/{{id}}/summary">Summary</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="/login">Logout</a>
                           </li>
                         </ul>
                         <span class="navbar-text">
@@ -33,38 +33,9 @@
                       </div>
                     </div>
                   </nav>
-                  <div class="container">
-                    <div><h3>Available Services</h3></div>
-                    <!-- populate with available services-->
-                    <div class="card" style="width: 18rem;" class="center">
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">"1st service name"</li>
-                          <li class="list-group-item">"2nd service name"</li>
-                        </ul>
-                      </div>
-                    <!-- closed -->
-                  </div>
-                  <div class="container">
-                    <div><h3>Service History</h3></div>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">Service</th>
-                          <th scope="col">Professional</th>
-                          <th scope="col">Status</th>
-                        </tr>
-                      </thead>
-                      <!-- populate with services for that customer -->
-                      <tbody>
-                        <tr>
-                          <td>"service name"</td>
-                          <td>"professional name"</td>
-                          <td>"status"</td>
-                        </tr>
-                      </tbody>
-                      <!-- closed -->
-                    </table>
-                  </div>
+                  {%block content%}
+                    <!--This part is getting from child html-->
+                  {%endblock%} 
             </div>
         </div>
     </body>

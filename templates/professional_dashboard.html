@@ -1,0 +1,71 @@
+{%extends "professional_home_layout.html"%}
+{%block content%}
+<div class="container">
+    <div><h3>Latest Service Requests</h3></div>
+    {%if pending_requests%}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Customer Email</th>
+          <th scope="col">Location (pincode)</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <!-- populate with service requests for the given service of that professional and do the actions accept and reject -->
+      <tbody>
+        {%for request in pending_requests%}
+        <tr>
+          <td>{{request.request_id}}</td>
+          <td>{{request.request_customer.full_name}}</td>
+          <td>{{request.request_customer.email}}</td>
+          <td>{{request.request_customer.pin_code}}</td>
+          <td>
+            <a class="btn btn-primary" href="#" type="button">Accept</a>
+            <a class="btn btn-primary" href="#" type="button">Reject</a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+      <!-- closed -->
+    </table>
+    {%else%}
+    <div>There are no available service requests..</div>
+    {%endif%}
+  </div>
+
+  <div class="container">
+    <div><h3>Closed Services</h3></div>
+    {%if closed_requests%}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Customer Email</th>
+          <th scope="col">Location (pincode)</th>
+          <th scope="col">Date</th>
+          <th scope="col">Rating</th>
+        </tr>
+      </thead>
+      <!-- populate with closed service requests for that professional -->
+      <tbody>
+        {%for request in closed_requests%}
+        <tr>
+          <td>{{request.request_id}}</td>
+          <td>{{request.request_customer.full_name}}</td>
+          <td>{{request.request_customer.email}}</td>
+          <td>{{request.request_customer.pin_code}}</td>
+          <td>{{request.date_completed}}</td>
+          <td>{{request.rating}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+      <!-- closed -->
+    </table>
+    {%else%}
+    <div>There are no closed services.</div>
+    {%endif%}
+  </div>
+{%endblock%}

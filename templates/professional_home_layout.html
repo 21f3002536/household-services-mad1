@@ -14,16 +14,16 @@
                       <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                           <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" href="/professional/{{id}}">Home</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="#">Search</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Summary</a>
+                            <a class="nav-link" href="/professional/{{id}}/summary">Summary</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="/login">Logout</a>
                           </li>
                         </ul>
                         <span class="navbar-text">
@@ -33,53 +33,9 @@
                       </div>
                     </div>
                   </nav>
-                  <div class="container">
-                    <div><h3>Latest Service Requests</h3></div>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">Customer Name</th>
-                          <th scope="col">Location (pincode)</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <!-- populate with service requests for the given service of that professional and do the actions accept and reject -->
-                      <tbody>
-                        <tr>
-                          <td>"customer name"</td>
-                          <td>"pincode"</td>
-                          <td>
-                            <a class="btn btn-primary" href="#" role="button">Accept</a>
-                            <a class="btn btn-primary" href="#" role="button">Reject</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <!-- closed -->
-                    </table>
-                  </div>
-                  <div class="container">
-                    <div><h3>Closed Services</h3></div>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">Customer Name</th>
-                          <th scope="col">Location (pincode)</th>
-                          <th scope="col">Date</th>
-                          <th scope="col">Rating</th>
-                        </tr>
-                      </thead>
-                      <!-- populate with closed service requests for that professional -->
-                      <tbody>
-                        <tr>
-                          <td>"customer name"</td>
-                          <td>"pincode"</td>
-                          <td>"date_completed"</td>
-                          <td>"rating"</td>
-                        </tr>
-                      </tbody>
-                      <!-- closed -->
-                    </table>
-                  </div>
+                  {%block content%}
+                    <!--This part is getting from child html-->
+                  {%endblock%} 
             </div>
         </div>
     </body>

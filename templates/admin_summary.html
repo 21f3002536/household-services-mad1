@@ -1,0 +1,12 @@
+{% extends "admin_home_layout.html" %}
+{% block content %}
+    <h1>Admin Summary</h1>
+    <div class="plot-container">
+        <h3>Service Requests by Status</h3>
+        <img src="{{ url_for('static', filename='images/request_summary.jpeg') }}" alt="Service Requests by Status" class="img-fluid">
+    </div>
+    <div class="plot-container">
+        <h3>Service Requests per Service Type</h3>
+        <img src="{{ url_for('static', filename='images/service_summary.jpeg') }}" alt="Service Requests per Service Type" class="img-fluid">
+    </div>
+{% endblock %}

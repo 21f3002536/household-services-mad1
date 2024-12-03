@@ -1,0 +1,45 @@
+{%extends "admin_home_layout.html"%}
+{%block content%}
+{%if request%}
+    <div class="center"><h3>Service Request ID: {{request.request_id}}</h3></div>
+    <form>
+    <div class="input_form">
+        <div class="mb-3">
+            <label for="sid" class="form-label">Service ID</label>
+            <input type="number" class="form-control" name="sid" id="sid" value="{{request.service_id}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="pid" class="form-label">Professional ID</label>
+            <input type="number" class="form-control" name="pid" id="pid" value="{{request.professional_id}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="cid" class="form-label">Customer ID</label>
+            <input type="number" class="form-control" name="cid" id="cid" value="{{request.customer_id}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="date_requested" class="form-label">Date Requested</label>
+            <input type="text" class="form-control" name="date_requested" id="date_requested" value="{{request.date_requested}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="date_completed" class="form-label">Date Completed</label>
+            <input type="text" class="form-control" name="date_completed" id="date_completed" value="{{request.date_completed}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <input type="text" class="form-control" name="status" id="status" value="{{request.status}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input type="number" class="form-control" name="rating" id="rating" value="{{request.rating}}" readonly>
+        </div>
+            <label for="remarks" class="form-label">Remarks</label>
+            <input type="text" class="form-control" name="remarks" id="remarks" value="{{request.remarks}}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <a type="button" class="btn btn-primary" href="/admin">Back</a>
+        </div>
+    </div>
+    </form>
+    {%endif%}
+{%endblock%}

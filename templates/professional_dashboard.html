@@ -22,8 +22,7 @@
           <td>{{request.request_customer.email}}</td>
           <td>{{request.request_customer.pin_code}}</td>
           <td>
-            <a class="btn btn-primary" href="#" type="button">Accept</a>
-            <a class="btn btn-primary" href="#" type="button">Reject</a>
+            <a class="btn btn-primary" href="/professional/{{name}}/{{id}}/{{request.request_id}}/accept" type="button">Accept</a>
           </td>
         </tr>
         {%endfor%}
@@ -32,6 +31,38 @@
     </table>
     {%else%}
     <div>There are no available service requests..</div>
+    {%endif%}
+  </div>
+
+  <div class="container">
+    <div><h3>Accepted Service Requests</h3></div>
+    {%if accepted_requests%}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Customer Email</th>
+          <th scope="col">Location (pincode)</th>
+          <th scope="col">Booking date</th>
+        </tr>
+      </thead>
+      <!-- populate with accepted service requests for that professional -->
+      <tbody>
+        {%for request in accepted_requests%}
+        <tr>
+          <td>{{request.request_id}}</td>
+          <td>{{request.request_customer.full_name}}</td>
+          <td>{{request.request_customer.email}}</td>
+          <td>{{request.request_customer.pin_code}}</td>
+          <td>{{request.date_requested}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+      <!-- closed -->
+    </table>
+    {%else%}
+    <div>There are no accepted service requests.</div>
     {%endif%}
   </div>
 

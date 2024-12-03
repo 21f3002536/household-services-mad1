@@ -1,0 +1,29 @@
+{%extends "admin_home_layout.html"%}
+{%block content%}
+    <div class="center"><h3>Add Service</h3></div>
+    <form action="#" method="POST">
+    <div class="input_form">
+        <div class="mb-3">
+            <label for="name" class="form-label">Service name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" name="price" id="price" placeholder="00" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" name="description" id="description" placeholder="" required>
+        </div>
+        <div class="mb-3">
+            <label for="time" class="form-label">Time Required (in hrs)</label>
+            <input type="number" class="form-control" name="time" id="time" placeholder="00" required>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a type="button" class="btn btn-primary" href="/admin">Cancel</a>
+        </div>
+    </div>
+    </form>
+{%endblock%}

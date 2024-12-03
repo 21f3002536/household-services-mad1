@@ -1,0 +1,42 @@
+{%extends "admin_home_layout.html"%}
+{%block content%}
+{%if professional%}
+    <div class="center"><h3>{{professional.name}} Profile</h3></div>
+    <form>
+    <div class="input_form">
+        <div class="mb-3">
+            <label for="professional_id" class="form-label">ID</label>
+            <input type="number" class="form-control" name="professional_id" id="professional_id" value="{{professional.professional_id}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" id="name" value="{{professional.full_name}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email ID</label>
+            <input type="text" class="form-control" name="email" id="email" value="{{professional.email}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="pin_code" class="form-label">Pincode</label>
+            <input type="number" class="form-control" name="pin_code" id="pin_code" value="{{professional.pin_code}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="experience" class="form-label">Experience</label>
+            <input type="number" class="form-control" name="experience" id="experience" value="{{professional.experience}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="service" class="form-label">Service</label>
+            <input type="text" class="form-control" name="service" id="service" value="{{professional.professional_services.name}}:{{professional.professional_services.description}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Average Rating</label>
+            <input type="number" class="form-control" name="rating" id="rating" value="{{professional.rating}}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <a type="button" class="btn btn-primary" href="/admin">Back</a>
+        </div>
+    </div>
+    </form>
+    {%endif%}
+{%endblock%}

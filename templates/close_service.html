@@ -1,0 +1,33 @@
+{%extends "customer_home_layout.html"%}
+{%block content%}
+    <div class="center"><h3>Close Service</h3></div>
+    <form action="#" method="POST">
+    <div class="input_form">
+        <div class="mb-3">
+            <label for="request_id" class="form-label">Request ID</label>
+            <input type="number" class="form-control" name="request_id" id="request_id" value="{{request.request_id}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="service_name" class="form-label">Service Name</label>
+            <input type="text" class="form-control" name="service_name" id="service_name" value="{{request.request_service.name}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="professional_name" class="form-label">Professional Name</label>
+            <input type="text" class="form-control" name="professional_name" id="professional_name" value="{{request.request_professional.full_name}}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating (out of 5)</label>
+            <input type="number" class="form-control" name="rating" id="time" placeholder="5" required>
+        </div>
+        <div class="mb-3">
+            <label for="remarks" class="form-label">Remarks</label>
+            <input type="text" class="form-control" name="remarks" id="remarks" placeholder="">
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a type="button" class="btn btn-primary" href="/customer/{{name}}/{{id}}">Cancel</a>
+        </div>
+    </div>
+    </form>
+{%endblock%}

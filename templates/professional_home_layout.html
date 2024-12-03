@@ -14,13 +14,7 @@
                       <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                           <li class="nav-item">
-                            <a class="nav-link" href="/professional/{{id}}">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Search</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/professional/{{id}}/summary">Summary</a>
+                            <a class="nav-link" href="/professional/{{name}}/{{id}}">Home</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="/login">Logout</a>
@@ -28,7 +22,7 @@
                         </ul>
                         <span class="navbar-text">
                           <div>Welcome {{name}}</div>
-                          <div><a href="#">View/edit profile</a></div>
+                          <div><a href="/professional/{{name}}/{{id}}/view">View profile</a></div>
                         </span>
                       </div>
                     </div>

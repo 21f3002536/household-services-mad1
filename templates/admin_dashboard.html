@@ -22,8 +22,8 @@
           <td>{{service.description}}</td>
           <td>{{service.price}}</td>
           <td>
-            <a class="btn btn-primary" href="#" role="button">Edit</a>
-            <a class="btn btn-primary" href="#" role="button">Delete</a>
+            <a class="btn btn-primary" href="/admin/edit_service/{{service.service_id}}" role="button">Edit</a>
+            <a class="btn btn-primary" href="/admin/delete_service/{{service.service_id}}" role="button">Delete</a>
           </td>
         </tr>
         {%endfor%}
@@ -34,7 +34,7 @@
     <div>No services available!</div>
     {%endif%}
   </div>
-  <a class="btn btn-primary" href="" type="button">Add services</a>
+  <a class="btn btn-primary" href="/admin/add_service" type="button">Add services</a>
 
   <div class="container">
     <div><h3>Professionals</h3></div>
@@ -58,7 +58,8 @@
           <td>{{prof.experience}}</td>
           <td>{{prof.professional_services.name}}</td>
           <td>
-            <a class="btn btn-primary" href="#" role="button">Delete</a>
+            <a class="btn btn-primary" href="/admin/view_prof/{{prof.professional_id}}" role="button">View</a>
+            <a class="btn btn-primary" href="/admin/delete_prof/{{prof.professional_id}}" role="button">Delete</a>
           </td>
         </tr>
         {%endfor%}
@@ -90,6 +91,9 @@
           <td>{{request.request_professional.full_name}}</td>
           <td>{{request.date_requested}}</td>
           <td>{{request.status}}</td>
+          <td>
+            <a class="btn btn-primary" href="/admin/view_request/{{request.request_id}}" role="button">View</a>
+          </td>
         </tr>
         {%endfor%}
       </tbody>

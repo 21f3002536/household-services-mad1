@@ -33,19 +33,15 @@
                         <label for="service" class="form-label">Service</label>
                         <select class="form-select" aria-label="service" name="service" id="service" required>
                             <option selected>Open this select menu</option>
-                            <option value="one">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            {%for service in services%}
+                            <option value="{{service.description}}">{{service.name}}:{{service.description}}</option>
+                            {%endfor%}
                           </select>
                     </div>
                     <!-- service_name closed-->
                     <div class="mb-3">
                         <label for="experience" class="form-label">Experience (in years)</label>
                         <input type="number" class="form-control" name="experience" id="experience" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="documents" class="form-label">Add documents (pdf)</label>
-                        <input type="file" class="form-control" name="documents" id="documents" required>
                     </div>
 
                     <div class="mb-3">

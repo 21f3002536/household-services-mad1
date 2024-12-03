@@ -24,7 +24,7 @@
             <td>{{service.description}}</td>
             <td>{{service.time_required}}</td>
             <td>{{service.price}}</td>
-            <td><a class="btn btn-primary" href="#" type="button">Book</a></td>
+            <td><a class="btn btn-primary" href="/customer/{{name}}/{{id}}/{{service.service_id}}/book" type="button">Book</a></td>
           </tr>
           {%endfor%}
         </tbody>
@@ -56,8 +56,8 @@
           <td>{{request.request_service.name}}</td>
           <td>{{request.request_professional.full_name}}</td>
           <td>{{request.request_professional.email}}</td>
-          {%if request.status=="closed"%}
-          <td><a class="btn btn-primary" href="#" type="button">Close it?</a></td>
+          {%if request.status=="accepted"%}
+          <td><a class="btn btn-primary" href="/customer/{{name}}/{{id}}/{{request.request_id}}/close" type="button">Close it?</a></td>
           {%else%}
           <td>{{request.status}}</td>
           {%endif%}

@@ -14,21 +14,18 @@
                       <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                           <li class="nav-item">
-                            <a class="nav-link" href="/customer/{{id}}">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Search</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/customer/{{id}}/summary">Summary</a>
+                            <a class="nav-link" href="/customer/{{name}}/{{id}}">Home</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="/login">Logout</a>
                           </li>
                         </ul>
+                        <form class="d-flex" method="POST" action="/customer/{{name}}/{{id}}/search">
+                          <input class="form-control me-2" type="search" placeholder="Search services" aria-label="Search" name="search_txt" id="search_txt">
+                          <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                         <span class="navbar-text">
                           <div>Welcome {{name}}</div>
-                          <div><a href="#">View/edit profile</a></div>
                         </span>
                       </div>
                     </div>
